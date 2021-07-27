@@ -1,0 +1,26 @@
+{
+  "listeners": {
+    "*:8100": {
+      "pass": "applications/nodejs"
+    }
+  },
+  "applications": {
+    "nodejs": {
+      "type": "external",
+      "processes": 5,
+      "user": "node",
+      "group": "node",
+      "working_directory": "/var/www",
+      "executable": "/usr/bin/env",
+      "arguments": [
+          "node",
+          "--loader",
+          "unit-http/loader.mjs",
+          "--require",
+          "unit-http/loader",
+          "index.js"
+        ]
+    }
+  },
+  "access_log": "/dev/stdout"
+}
